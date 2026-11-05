@@ -51,7 +51,7 @@ public class TarefaService {
         entity.setDescricao(request.getDescricao());
         entity.setStatus(novoStatus == null ? entity.getStatus() : novoStatus);
         entity.setPrioridade(request.getPrioridade() == null ? entity.getPrioridade() : request.getPrioridade());
-        tarefaRepository.getEntityManager().flush();
+        tarefaRepository.persistAndFlush(entity);
         return entity.toResponse();
     }
 
